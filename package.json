@@ -1,0 +1,64 @@
+{
+  "name": "smashpoint-court-system",
+  "version": "1.0.0",
+  "private": true,
+  "main": "electron.js",
+  "homepage": "./",
+  "author": {
+    "name": "NEOTECH",
+    "email": "andrew@neotechkk.com"
+  },
+  "description": "Professional Badminton Court Booking Management System",
+  "productName": "SmashPoint Court System",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "electron:dev": "concurrently \"cross-env BROWSER=none npm run dev\" \"wait-on http://localhost:5173 && electron .\"",
+    "electron:build": "npm run build && electron-builder -w"
+  },
+  "dependencies": {
+    "@google/genai": "*",
+    "lucide-react": "^0.263.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.0",
+    "concurrently": "^8.2.0",
+    "cross-env": "^7.0.3",
+    "electron": "^25.3.0",
+    "electron-builder": "^24.6.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "wait-on": "^7.0.1"
+  },
+  "build": {
+    "appId": "com.neotech.smashpoint",
+    "productName": "SmashPoint Court System",
+    "copyright": "Copyright © 2024 NEOTECH",
+    "files": [
+      "dist/**/*",
+      "electron.js"
+    ],
+    "directories": {
+      "output": "dist_electron",
+      "buildResources": "public"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "public/favicon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "SmashPoint Court System",
+      "artifactName": "${productName} Setup ${version}.${ext}",
+      "installerIcon": "public/favicon.ico",
+      "uninstallerIcon": "public/favicon.ico"
+    }
+  }
+}
